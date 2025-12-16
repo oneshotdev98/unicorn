@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import AppSidebar from './AppSidebar.vue'
 import SidebarNavigation from '../../components/sidebar/SidebarNavigation.vue'
 import SidebarProfile from '../../components/sidebar/SidebarProfile.vue'
@@ -7,8 +7,17 @@ import SidebarToggle from '../../components/sidebar/SidebarToggle.vue'
 import AppHeader from '../../components/header/AppHeader.vue'
 import IconSidebarLogo from '../../components/icons/sidebar/IconSidebarLogo.vue'
 
-const sidebarOpen = ref(true)
+// Start closed by default (will be opened on desktop via onMounted)
+const sidebarOpen = ref(false)
 const emit = defineEmits(['create'])
+
+// On mount, check if we're on desktop (md breakpoint = 768px) and open sidebar if so
+onMounted(() => {
+  const isDesktop = window.innerWidth >= 768
+  if (isDesktop) {
+    sidebarOpen.value = true
+  }
+})
 
 function toggleSidebar() {
   sidebarOpen.value = !sidebarOpen.value
