@@ -4,7 +4,7 @@ defineEmits(['create'])
 </script>
 
 <template>
-  <header class="backdrop-blur">
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-slate-200">
     <div class="mx-auto max-w-6xl pl-8 pr-5 py-3 sm:px-10 sm:py-4">
       <div class="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
         <h1 class="text-lg font-semibold leading-tight sm:text-2xl">
